@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.dcreeperstone.mctracker","l":"App"},{"p":"com.dcreeperstone.mctracker","l":"Coordinate"},{"p":"com.dcreeperstone.mctracker","l":"Tracker"},{"p":"com.dcreeperstone.mctracker","l":"Waypoint"}]
