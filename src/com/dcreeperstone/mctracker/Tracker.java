@@ -28,15 +28,16 @@ public final class Tracker {
     private static final String DELIMITER = ": ";
 
     /**
-     * 
+     * Creates a new {@link Tracker} instance and allocates memory for a new {@link ArrayList}
+     * to store {@link Waypoint} instances.
      */
     public Tracker() {
         mWaypoints = new ArrayList<>();
     }
 
     /**
-     * 
-     * @param waypointFile
+     * Creates a new {@link Tracker} and loads formatted {@link Waypoint} instances from a file.
+     * @param waypointFile The file that contains the {@link Waypoint} instances.
      */
     public Tracker(File waypointFile) {
         mWaypoints = new ArrayList<>();
@@ -46,8 +47,8 @@ public final class Tracker {
     }
 
     /**
-     * 
-     * @param file
+     * Loads {@link Waypoint} instances from the specified file.
+     * @param file The file from which to retrieve {@link Waypoint} instances.
      */
     public void loadWaypointsFromFile(File file) {
         Scanner fileReader = null;
@@ -58,7 +59,7 @@ public final class Tracker {
             String line = null;
             while (fileReader.hasNext()) {
                 Waypoint currentWaypoint;
-                Coordinate currentCoordinate;
+                Point currentPoint;
                 String[] tokens;
                 String[] positionTokens;
                 String location;
@@ -78,8 +79,8 @@ public final class Tracker {
                     yPos = Float.parseFloat(positionTokens[1]);
                     zPos = Float.parseFloat(positionTokens[2]);
 
-                    currentCoordinate = new Coordinate(xPos, yPos, zPos);
-                    currentWaypoint = new Waypoint(location, currentCoordinate);
+                    currentPoint = new Point(xPos, yPos, zPos);
+                    currentWaypoint = new Waypoint(location, currentPoint);
 
                     mWaypoints.add(currentWaypoint);
                 }
@@ -108,7 +109,7 @@ public final class Tracker {
     }
 
     /**
-     * 
+     * Displays all of the available {@link Waypoint} instances currently stored in the {@link ArrayList}.
      */
     public void showWaypoints() {
         if (mWaypoints.isEmpty())
@@ -120,7 +121,9 @@ public final class Tracker {
     }
 
     /**
-     * 
+     * Writes all the {@link Waypoint} instances to a file. If a file was not used 
+     * when creating a {@link Tracker} instance, the user is given the ability to 
+     * save {@link Waypoint} instances to a new file.
      */
     public void saveWaypoints() {
         JFileChooser fileChooser;

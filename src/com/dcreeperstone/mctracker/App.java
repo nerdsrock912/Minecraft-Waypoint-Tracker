@@ -5,13 +5,19 @@ import java.util.Scanner;
 
 import javax.swing.JFileChooser;
 
+/**
+ * This class has the functionality of maintaining a {@link Tracker} instance and its capabilities.
+ * The user can choose to load {@link Waypoint} instances from a file or start from scratch, create
+ * new {@link Waypoint} instances, and then save them all to a specified file.
+ */
 public class App {
 
     public static final int QUIT_CHOICE = 3;
 
     /**
-     * 
-     * @param args
+     * Runs a {@link Tracker} instance and lets the user load, create, and save a list 
+     * of {@link Waypoint} instances.
+     * @param args The command-line arguments.
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
@@ -20,7 +26,7 @@ public class App {
         char loadFromFile;
         int optionChoice = 0;
 
-        System.out.print("Load coordinates from file? (Y/N) ");
+        System.out.print("Load waypoints from file? (Y/N) ");
         loadFromFile = input.nextLine().toUpperCase().charAt(0);
 
         if (loadFromFile == 'Y') {
@@ -40,8 +46,8 @@ public class App {
     }
 
     /**
-     * 
-     * @return
+     * Gets a {@link File} from the user from which to load data.
+     * @return The {@link File} containing {@link Waypoint} instances.
      */
     public static File getWaypointFile() {
         JFileChooser fileChooser = new JFileChooser();
@@ -58,8 +64,8 @@ public class App {
     }
 
     /**
-     * 
-     * @return
+     * Gets the user's choice to add, show, or save {@link Waypoint} instances.
+     * @return The user's choice.
      */
     public static int getMenuChoice() {
         Scanner input = new Scanner(System.in);
@@ -75,9 +81,9 @@ public class App {
     }
 
     /**
-     * 
-     * @param menuChoice
-     * @param tracker
+     * Performs the desired choice of adding, showing, or saving the list of {@link Waypoint} objects.
+     * @param menuChoice The choice that the user made.
+     * @param tracker The {@link Tracker} maintaining the list of {@link Waypoint} instances.
      */
     public static void performChoice(int menuChoice, Tracker tracker) {
         Waypoint waypoint;
@@ -95,24 +101,24 @@ public class App {
     }
 
     /**
-     * 
-     * @return
+     * Gets a location and its point in a world from the user.
+     * @return The {@link Waypoint} instance containing a location and its point.
      */
     public static Waypoint getWaypoint() {
         Waypoint waypoint;
         String waypointName;
-        Coordinate coordinate;
+        Point point;
 
         waypointName = getLocation();
-        coordinate = getCoordinates();
-        waypoint = new Waypoint(waypointName, coordinate);
+        point = getPoint();
+        waypoint = new Waypoint(waypointName, point);
 
         return waypoint;
     }
 
     /**
-     * 
-     * @return
+     * Gets the location of a place from the user.
+     * @return The location of a place.
      */
     public static String getLocation() {
         Scanner input = new Scanner(System.in);
@@ -125,12 +131,12 @@ public class App {
     }
 
     /**
-     * 
-     * @return
+     * Gets a {@link Point} object from the user.
+     * @return The (x, y, z) coordinates of the place.
      */
-    public static Coordinate getCoordinates() {
+    public static Point getPoint() {
         Scanner input = new Scanner(System.in);
-        Coordinate coordinates;
+        Point point;
         float xPos, yPos, zPos;
 
         System.out.print("Enter the x-coordinate: ");
@@ -139,8 +145,8 @@ public class App {
         yPos = input.nextFloat();
         System.out.print("Enter the z-coordinate: ");
         zPos = input.nextFloat();
-        coordinates = new Coordinate(xPos, yPos, zPos);
+        point = new Point(xPos, yPos, zPos);
 
-        return coordinates;
+        return point;
     }
 }

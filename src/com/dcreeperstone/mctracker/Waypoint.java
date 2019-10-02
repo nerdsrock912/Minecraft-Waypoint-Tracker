@@ -1,33 +1,33 @@
 package com.dcreeperstone.mctracker;
 
 /**
- * 
+ * This class allows the user to classify a specific location in a world according to name and coordinates.
  */
 public class Waypoint implements Comparable<Waypoint> {
 
     private final String mLocation;
-    private final Coordinate mCoordinates;
+    private final Point mPoint;
 
     /**
-     * 
-     * @param location
-     * @param coordinates
+     * Creates a new {@link Waypoint} instance with the specified location and {@link Point}.
+     * @param location The location of the place.
+     * @param point The (x, y, z) coordinates of the place.
      */
-    public Waypoint(String location, Coordinate coordinates) {
+    public Waypoint(String location, Point point) {
         mLocation = location;
-        mCoordinates = coordinates;
+        mPoint = point;
     }
 
     /**
-     * 
-     * @param location
-     * @param xCoordinate
-     * @param yCoordinate
-     * @param zCoordinate
+     * Creates a new {@link Waypoint} with the specified location and (x, y, z) coordinates.
+     * @param location The location of the place.
+     * @param xPosition The x-coordinate of the place.
+     * @param yPosition The y-coordinate of the place.
+     * @param zPosition The z-coordinate of the place.
      */
-    public Waypoint(String location, float xCoordinate, float yCoordinate, float zCoordinate) {
+    public Waypoint(String location, float xPosition, float yPosition, float zPosition) {
         mLocation = location;
-        mCoordinates = new Coordinate(xCoordinate, yCoordinate, zCoordinate);
+        mPoint = new Point(xPosition, yPosition, zPosition);
     }
 
     @Override
@@ -36,19 +36,19 @@ public class Waypoint implements Comparable<Waypoint> {
     }
 
     /**
-     * 
-     * @return
+     * Gets the location of the {@link Waypoint}.
+     * @return The location of the place.
      */
     public String getLocation() {
         return mLocation;
     }
 
     /**
-     * 
-     * @return
+     * Gets the coordinates of the {@link Waypoint}.
+     * @return The (x, y, z) coordinates of the place.
      */
-    public Coordinate getCoordinates() {
-        return mCoordinates;
+    public Point getPoint() {
+        return mPoint;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class Waypoint implements Comparable<Waypoint> {
         StringBuilder output = new StringBuilder();
 
         output.append(mLocation + ": ");
-        output.append(mCoordinates);
+        output.append(mPoint);
 
         return output.toString();
     }
