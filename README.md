@@ -1,2 +1,2 @@
-# Minecraft-Waypoint-Tracker
-Manages waypoints for Minecraft using a name/coordinate system
+# Minecraft Waypoint Tracker
+The Minecraft Waypoint Tracker allows a user to save coordinate-specific locations in their Minecraft world. If they want to save the coordinates of a nice village or a medieval castle that they found, they can by running the program, choosing either to create a new waypoint file or load waypoints (locations) from a previously created file. The user can continuously add waypoints and then save once finished.
